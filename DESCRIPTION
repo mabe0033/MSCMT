@@ -62,3 +62,5 @@ VignetteBuilder: knitr
 RdMacros: Rdpack
 BuildVignettes: yes
 Config/roxygen2/version: 8.0.0
+URL: https://github.com/mabe0033/MSCMT
+BugReports: https://github.com/mabe0033/MSCMT/issues
