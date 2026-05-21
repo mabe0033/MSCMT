@@ -1453,7 +1453,7 @@ CCCCCCCCCCCCCCCCCCCCC  BANDED SYSTEMS
 *
 *        Solve the system A*X = B, overwriting B with X.
 *
-         CALL DGBTRS( 'N', N, KL, KU, NRHS, AB, LDAB, IPIV,
+         CALL DGBTRS( 'No transpose', N, KL, KU, NRHS, AB, LDAB, IPIV,
      $                B, LDB, INFO )
       END IF
       RETURN
@@ -2990,7 +2990,7 @@ C      NB = ILAENV( 1, 'DGETRF', ' ', M, N, -1, -1 )
 *
 *        Solve the system A*X = B, overwriting B with X.
 *
-         CALL DGETRS( 'N', N, NRHS, A, LDA, IPIV, B, LDB,
+         CALL DGETRS( 'No transpose', N, NRHS, A, LDA, IPIV, B, LDB,
      $                INFO )
       END IF
       RETURN
