@@ -1,0 +1,266 @@
+Changes in version 1.4.3 (2026-05-20)
+
+Bug fixes
+
+- minor changes to eliminate compiler warnings introduced in 1.4.2.
+
+- replaced (deprecated) use of 'aes_string()' when calling 'ggplot()' and 
+  'size' when calling 'geom_line()' due to changes in the 'ggplot2' package.
+
+
+Changes in version 1.4.2 (2026-05-19)
+
+Bug fixes
+
+- minor changes to the Fortran code to eliminate compiler warnings.
+
+
+Changes in version 1.4.1 (2025-12-08)
+
+Changes
+
+- changed the inclusion of a header file (in order to fix a warning).
+
+
+Changes in version 1.4.0 (2024-03-19)
+
+Changes
+
+- packages 'Synth', 'LowRankQP' and 'Rmalschains' have reappeared on CRAN. 
+  All references to the documentation of these packages, the support for 
+  'malschains' as outer optimizer and the support of 'LowRankQPOpt' as inner 
+  optimizer have been restored.
+
+- some cryptic error messages are replaced by more meaningful ones, especially 
+  if necessary data is missing.
+
+- leaving character variables in the data no longer leads to an error.
+
+Bug fixes
+
+- corrected some missing edits (after copying and pasting) in one of the 
+  vignettes.
+
+- the package documentation has been corrected.
+
+
+Changes in version 1.3.9 (2023-11-29)
+
+Bug fixes
+
+- fixed insecure REprintf() calls in package's C code (many thanks to Kurt
+  Hornik for the hint).
+
+
+Changes in version 1.3.8 (2023-11-13)
+
+Changes
+
+- removed support for package 'hydroPSO' (which has been archived).
+
+Bug fixes
+
+- fixed missing alias for package documentation (many thanks to Kurt Hornik 
+  for the hint).
+
+
+Changes in version 1.3.7 (2023-04-17)
+
+Changes
+
+- packages 'Synth', 'LowRankQP' and 'Rmalschains' have been archived recently. 
+  All references to these packages' documentation, the support for 'malschains' 
+  as outer optimizer and the support of 'LowRankQPOpt' as inner optimizer have
+  been removed.
+
+- the vignettes now use cached copies of the results obtained with package
+  'Synth' (version: 1.1-6) because 'Synth' is currently not available on CRAN.
+
+  some examples using package 'Synth' have been changed or removed.
+
+
+Changes in version 1.3.6 (2023-03-09)
+
+Bug fixes
+
+- corrected S3 generic/method inconsistency in ggplot.mscmt. Code relying on 
+  ggplot.mscmt's former argument order or the name of its first argument may 
+  need revision.
+
+
+Changes in version 1.3.5 (2023-01-31)
+
+New features
+
+- added support for weekly and daily data
+
+Bug fixes
+
+- removed (dispensable) LazyData entry from DESCRIPTION
+
+
+Changes in version 1.3.4 (2019-11-14)
+
+New features
+
+- added preliminary support for specification search (for the optimal set of
+  predictors to include in the model specification) as an enhancement for
+  cross validation
+
+Changes in version 1.3.4 (2019-11-14)
+
+- tolerance of lp solver changed slightly
+
+- added some flexibility (for the labels) to the ggplot method
+
+- removed some unused (and unexported) code
+
+- improveSynth now also checks whether the donor weights of synth()'s solution
+  sum up to 1 (which they often do not!) and now also works when custom.v 
+  is set in the preceding synth()-call. Checks for optimality are now (solely)
+  based on relative suboptimality. This leads to a slight change in the
+  corresponding vignette.
+
+
+Bug fixes
+
+- added missing author information for LINPACK/SLATEC Fortran code (many 
+  thanks to Prof. Brian D. Ripley for the hint)
+
+
+Changes in version 1.3.3 (2018-05-04)
+
+Changes
+
+- minor documentation update (references)
+
+Bug fixes
+
+- Fixed a bug in mscmt for multivariate applications introduced in
+  version 1.3.2
+
+
+Changes in version 1.3.2 (2018-02-19)
+
+New features
+
+- added list element 'predictor.table' containing aggregated statistics of
+  predictor values to output of 'mscmt' (feature request)
+  
+Changes
+
+- list element 'dataprep.scaled' (in output of 'mscmt') now contains unscaled
+  variants 'X0.unscaled' and 'X1.unscaled' of (aggregated) predictor values
+
+
+Changes in version 1.3.1 (2018-01-04)
+
+Changes
+
+- minor documentation update (references)
+
+Bug fixes
+
+- some fixes/increased robustness for edge cases (e.g. single predictor)
+
+- progress bar fixed (thereby eliminating compiler warnings)
+
+
+Changes in version 1.3.0 (2017-08-17)
+
+New features
+
+- cross validation is now supported by function mscmt, see the corresponding
+  documentation.
+
+Changes
+
+- point size is now settable in ggplot.mscmt.
+
+- lp's in ill-conditioned problems are now tackled with the help of various
+  lp solvers to improve robustness. Packages Rglpk and lpSolveAPI are required
+  now.
+
+Bug fixes
+
+- 'no sunny donors' case fixed.
+
+- gamma-factors fixed.
+
+- some small bug fixes in ggplot.mscmt.
+
+
+Changes in version 1.2.0 (2017-01-30)
+
+New features
+
+- automatic repeated estimation with different outer optimizers and random 
+  seeds, optionally on a cluster.
+
+Changes
+
+- reasonable default parameters and documentation for outer optimizers
+  have been added.
+
+- improved cluster support: (malfunctioning) load balancing with parLapplyLB 
+  replaced by load balancing via clusterApplyLB.
+
+Bug fixes
+
+- fixed special treatment of 'one sunny donor' case.
+
+
+Changes in version 1.1.0 (2016-11-29)
+
+New features
+
+- newly supported outer optimizer "none" to implant 'artificial' solutions 
+  (fixed w and optionally fixed v).
+
+- many new outer optimizers are now supported, more documentation will follow.
+  
+- function compare() for comparison of estimation results, 
+  including corresponding updates for print.mscmt and ggplot.mscmt.
+
+Changes
+
+- names of agg.fns (component of mscmt results) are now set automatically.
+
+- user-defined agg.fns are now automatically exported to the cluster.
+
+- changed default optimizer to DEoptC.
+
+- predictor weights are not printed any more as verbose output in estimations.
+
+- some packages were moved from "Imports" to "Suggests".
+
+- number of calls to inner optimizer is now counted for benchmarking purposes.
+
+- package startup message added.
+
+Bug fixes
+
+- objective function weights alpha/beta/gamma are now treated correctly.
+
+- calls to the lp solver are now more robust.
+
+- some typos in vignettes have been corrected.
+
+- all data had to be sorted chronologically, this is now optional.
+
+- improveSynth reported wrong 'True' W*(V) if W*(V) was not optimal.
+
+
+Changes in version 1.0.0 (2016-07-25)
+
+New features
+
+- first public release of this package.
+
+Changes
+
+- no changes yet
+
+Bug fixes
+
+- no bugfixes yet
