@@ -1,11 +1,13 @@
-Changes in version 1.4.3 (2026-05-20)
+Changes in version 1.4.3 (2026-05-26)
 
 Bug fixes
 
-- minor changes to eliminate compiler warnings introduced in 1.4.2.
+- minor changes to remove compiler warnings.
 
 - replaced (deprecated) use of 'aes_string()' when calling 'ggplot()' and 
   'size' when calling 'geom_line()' due to changes in the 'ggplot2' package.
+
+- corrected a typo in a default axis label.
 
 
 Changes in version 1.4.2 (2026-05-19)

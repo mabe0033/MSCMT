@@ -2978,7 +2978,7 @@ c
 
 
       SUBROUTINE DWNLSM (W, MDW, MME, MA, N, L, PRGOPT, X, RNORM, MODE,             &
-     &   IPIVOT, ITYPE, WD, H, SCALE, Z, TEMP, D)
+     &   IPIVOT, ITYPE, WD, H, SCALE, Z, TEMP, D, XX)
 c***BEGIN PROLOGUE  DWNLSM
 c***SUBSIDIARY
 c***PURPOSE  Subsidiary to DWNNLS
@@ -3025,7 +3025,7 @@ c         to store the diagonal matrix of weights.
 c         These are used to apply the modified Givens
 c         transformations.
 c
-c         Z(*),TEMP(*)
+c         Z(*),TEMP(*),XX(*)
 c            Working arrays of length N.
 c
 c         D(*)
@@ -3049,7 +3049,7 @@ c   900911  Restriction on value of ALAMDA included.  (WRB)
 c***END PROLOGUE  DWNLSM
       INTEGER IPIVOT(*), ITYPE(*), L, MA, MDW, MME, MODE, N
       DOUBLE PRECISION D(*), H(*), PRGOPT(*), RNORM, SCALE(*), TEMP(*),             &
-     &   W(MDW,*), WD(*), X(*), Z(*)
+     &   W(MDW,*), WD(*), X(*), Z(*), XX(*)
 c
       EXTERNAL D1MACH,xDASUM,xDAXPY,xDCOPY,xDH12,xDNRM2,xDROTM,xDROTMG,             &
      &   xDSCAL, xDSWAP, DWNLIT, xIDAMAX, xXERMSG
@@ -3326,7 +3326,8 @@ c
 c
 c        Similarly permute X(*) vector.
 c
-         CALL xDCOPY (N-JCON, X(JCON+1), 1, X(JCON), 1)
+         CALL xDCOPY (N-JCON, X(JCON+1), 1, XX(JCON+1), 1)
+         CALL xDCOPY (N-JCON, XX(JCON+1), 1, X(JCON), 1)
          X(N) = 0.D0
          NSOLN = NSOLN - 1
          NIV = NIV - 1
@@ -4043,7 +4044,7 @@ c     User-designated
 c     Working arrays..
 c
 c     WORK(*)      A double precision working array of length at least
-c                  M + 5*N.
+c                  M + 6*N.
 c
 c     IWORK(*)     An integer-valued working array of length at least
 c                  M+N.
@@ -4077,7 +4078,7 @@ c   900510  Convert XERRWV calls to xXERMSG calls, change Prologue
 c           comments to agree with WNNLS.  (RWC)
 c   920501  Reformatted the REFERENCES section.  (WRB)
 c***END PROLOGUE  DWNNLS
-      INTEGER IWORK(*), L, L1, L2, L3, L4, L5, LIW, LW, MA, MDW, ME,                &
+      INTEGER IWORK(*), L, L1, L2, L3, L4, L5, L6, LIW, LW, MA, MDW, ME,              &
      &     MODE, N
       DOUBLE PRECISION  PRGOPT(*), RNORM, W(MDW,*), WORK(*), X(*)
       CHARACTER(LEN=8) XERN1
@@ -4136,10 +4137,11 @@ c
       L3 = L2 + ME + MA
       L4 = L3 + N
       L5 = L4 + N
+      L6 = L5 + N
 c
       CALL DWNLSM(W, MDW, ME, MA, N, L, PRGOPT, X, RNORM, MODE, IWORK,              &
      &            IWORK(L1), WORK(1), WORK(L1), WORK(L2), WORK(L3),                 &
-     &            WORK(L4), WORK(L5))
+     &            WORK(L4), WORK(L5), WORK(L6))
       RETURN
       END
 

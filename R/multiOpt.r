@@ -192,7 +192,7 @@ multiOpt <- function(X0,X1=0,Z0,Z1=0,check.global=TRUE,
         MDW <- ME+MA
         globals$Ipar  <- as.integer(c(ME=ME,MA=MA,MDW=MDW,N=N)) 
         globals$IWORK <- integer(MDW+N)
-        globals$WORK  <- double(MDW+5*N)
+        globals$WORK  <- double(MDW+6*N)
         globals$IWORK[1:2] <- c(length(globals$WORK),length(globals$IWORK))
         globals$RNORM <- double(1)
         globals$MODE  <- integer(1)

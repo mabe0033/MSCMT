@@ -2,7 +2,7 @@ Package: MSCMT
 Type: Package
 Encoding: UTF-8
 Version: 1.4.3
-Date: 2026-05-20
+Date: 2026-05-26
 Title: Multivariate Synthetic Control Method Using Time Series
 Authors@R: c(person("Martin","Becker", role = c("aut","cre"),
     email = "martin.becker@mx.uni-saarland.de",
