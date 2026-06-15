@@ -1,3 +1,10 @@
+Changes in version 1.4.4 (2026-06-15)
+
+Bug fixes
+
+- small changes to the Fortran code to eliminate compiler warnings.
+
+
 Changes in version 1.4.3 (2026-05-26)
 
 Bug fixes
